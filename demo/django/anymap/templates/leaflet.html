@@ -1,15 +1,18 @@
-{% extends 'map_base.html' %}
-{% load static %}
+{% extends 'map_base.html' %}  <!-- Extends the base map template -->
+{% load static %}  <!-- Loads Django's static files tag library -->
 
 {% block head %}
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <!-- Link to Leaflet CSS from a CDN with integrity and crossorigin attributes for security -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <!-- Script tag for Leaflet JS from a CDN with integrity and crossorigin attributes for security -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 {% endblock %}
 
 {% block map_title %}
-    Leaflet
+    Leaflet  <!-- Title for the Leaflet map block -->
 {% endblock %}
 
 {% block script %}
-<script type="module" src="{% static 'anymap/anymap-leaflet.js' %}"></script>
+    <!-- Script tag for the specific Leaflet JavaScript module from the static directory -->
+    <script type="module" src="{% static 'djangoMapCluster/djangoMapCluster-leaflet.js' %}"></script>  <!-- Changed 'anymap' to 'djangoMapCluster' -->
 {% endblock %}

@@ -21,7 +21,7 @@
 <script type="module">
     "use strict";
 
-    import { AnyclusterGoogle } from "/static/anycluster-google.js";
+    import { DjangoMapClusterGoogle } from "/static/djangoMapCluster/djangoMapCluster-google.js";
     import { MapInteractions } from "/static/anymap/map-interactions.js";
 
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -32,14 +32,14 @@
     });
 
     const singlePinImages = {
-        'imperial': '/static/anycluster/pin_imperial.png',
-        'stone': '/static/anycluster/pin_stone.png',
-        'wild': '/static/anycluster/pin_wild.png',
-        'japanese': '/static/anycluster/pin_japan.png',
-        'flower': '/static/anycluster/pin_flower.png'
+        'imperial': '/static/djangoMapCluster/pin_imperial.png',
+        'stone': '/static/djangoMapCluster/pin_stone.png',
+        'wild': '/static/djangoMapCluster/pin_wild.png',
+        'japanese': '/static/djangoMapCluster/pin_japan.png',
+        'flower': '/static/djangoMapCluster/pin_flower.png'
     }
 
-    const apiUrl = "http://localhost:8080/anycluster/";
+    const apiUrl = "http://localhost:8080/djangoMapCluster/";
 
     const settings = {
         singlePinImages: singlePinImages,
@@ -48,11 +48,11 @@
         }
     };
 
-    const markerFolderPath = '/static/anycluster/images/';
+    const markerFolderPath = '/static/djangoMapCluster/images/';
 
     google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
-        const anyclusterGoogle = new AnyclusterGoogle('{{ google_maps_api_key }}', map, apiUrl, markerFolderPath, settings);
-        const mapInteractions = new MapInteractions(anyclusterGoogle);
+        const djangoMapClusterGoogle = new DjangoMapClusterGoogle('{{ google_maps_api_key }}', map, apiUrl, markerFolderPath, settings);
+        const mapInteractions = new MapInteractions(djangoMapClusterGoogle);
     });
 </script>
 {% endblock %}

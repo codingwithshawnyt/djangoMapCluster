@@ -1,0 +1,61 @@
+/* Sets the margin and padding of the HTML and body elements to 0 to remove default browser spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Applies a flexbox layout to distribute space around items evenly */
+.space-around {
+    justify-content: space-around;
+}
+
+/* Styles the #map element to take full width and 60% of the viewport height */
+#map {
+    width: 100%;
+    height: 60vh;
+}
+
+/* Ensures that the #content element has a minimum height of 90% of the viewport height */
+#content {
+    min-height: 90vh;
+}
+
+/* Styles the .footer class to use a flexbox layout, centering items horizontally and vertically, and makes it stick to the bottom */
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background-color: #FAFAFA;
+}
+
+/* Media query for screens with a minimum width of 576px - currently empty, can be used for responsive adjustments */
+@media (min-width: 576px) {
+
+}
+
+/* Media query for screens with a minimum width of 768px - currently empty, can be used for responsive adjustments */
+@media (min-width: 768px) {
+
+}
+
+/* Media query for screens with a minimum width of 992px, adds border styling to the #map element */
+@media (min-width: 992px) {
+  #map {
+    border: .5rem solid black; /* Adds a solid black border of 0.5rem around the map */
+    border-radius: 1rem; /* Rounds the corners of the border to 1rem */
+    aspect-ratio: 4/3; /* Sets the aspect ratio of the map to 4:3 */
+  }
+}
+
+/* Media query for screens with a minimum width of 1200px - currently empty, can be used for responsive adjustments */
+@media (min-width: 1200px) {
+
+}
+
+/* Media query for screens with a minimum width of 1400px - currently empty, can be used for responsive adjustments */
+@media (min-width: 1400px) {
+
+}

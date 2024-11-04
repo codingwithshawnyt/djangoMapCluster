@@ -1,15 +1,18 @@
-{% extends 'map_base.html' %}
-{% load static %}
+{% extends 'map_base.html' %}  <!-- Extends the base map template -->
+{% load static %}  <!-- Loads Django's static files tag library -->
 
 {% block head %}
+    <!-- Includes OpenLayers JavaScript from a static directory -->
     <script src="{% static 'openlayers/v7.3.0/dist/ol.js' %}"></script>
+    <!-- Includes OpenLayers CSS from a CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.3.0/ol.css">
 {% endblock %}
 
 {% block map_title %}
-    OpenLayers
+    OpenLayers  <!-- Title for the OpenLayers map block -->
 {% endblock %}
 
 {% block script %}
+    <!-- Includes a specific JavaScript module for OpenLayers from a static directory -->
     <script type="module" src="{% static 'anymap/anymap-openlayers.js' %}"></script>
 {% endblock %}
