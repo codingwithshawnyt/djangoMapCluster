@@ -29,3 +29,18 @@ Performance Tips
 
 - Proper indexing of GIS database columns is crucial
 - SSDs can offer a performance boost of 10-20 times over HDDs
+
+Demo Screenshots
+----------------
+
+### Filter Menu
+![Filter Menu](filterMenu.png)
+*This image shows the filter menu where users can apply different filters to the map data.*
+
+### Map Markers
+![Map Markers](mapMarkers.png)
+*This image displays the map with markers representing clustered data points.*
+
+### Marker List
+![Marker List](markerList.png)
+*This image shows a list of markers, providing detailed information about each data point on the map.*
