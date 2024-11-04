@@ -43,4 +43,5 @@ Demo Screenshots
 
 ### Marker List
 ![Marker List](markerList.png)
+
 *This image shows a list of markers, providing detailed information about each data point on the map.*
