@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-# Open the README.md file and read its contents to use as the long description
+# Open the README.md file and read its contents to use as the extended description
 with open("README.md", "r") as file_handle:
     detailed_description = file_handle.read()
 
