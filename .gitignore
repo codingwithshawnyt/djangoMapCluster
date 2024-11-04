@@ -1,0 +1,11 @@
+# directories
+__pycache__
+node_modules
+.parcel-cache
+docs/build
+venv
+# files
+*.pyc
+*.directory
+*.sqlite3
+google_maps.py
