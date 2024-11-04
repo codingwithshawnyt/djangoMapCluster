@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: djangoMapCluster
+Version: 2.5.0
+Summary: djangoMapCluster provides Server-Side clustering of map markers for GeoDjango
+Home-page: https://github.com/codingwithshawnyt/djangoMapCluster
+Author: Shawn Ray
+Author-email: shawnray5699@gmail.com
+License: The MIT License
+Keywords: django, cluster, kmeans, grid, server-side clustering
+Platform: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: psycopg2
+Requires-Dist: djangorestframework
+Requires-Dist: jsonschema
+
+djangoMapCluster (POSTGIS version)
+==================================
+
+
+djangoMapCluster facilitates server-side clustering of map markers for GeoDjango, ideal for handling large datasets of markers. 
+Performance varies by server capacity, typically supporting between 200,000 and 500,000 markers effectively.
+
+Features
+--------
+
+djangoMapCluster provides two primary clustering techniques:
+- Clustering via a grid system
+- Clustering by the geometric density of points (requires PSQL extension)
+- Allows clustering of any geographical shape, such as Polygons or Multipolygons
+- Retrieves all items within a specific cluster
+
+Additionally, it includes a caching feature that processes only new map areas when the user navigates the map.
+
+It also offers extensive customization options:
+- Compatible with OpenLayers, Google Maps, and Leaflet
+- Customizable actions on cluster clicks
+- Customizable cluster icons
+- Adjustable grid sizes and other clustering parameters
+- Filter application on clusters
+- Specialized markers or pins for solitary items
+
+Performance Tips
+----------------
+
+- Proper indexing of GIS database columns is crucial
+- SSDs can offer a performance boost of 10-20 times over HDDs

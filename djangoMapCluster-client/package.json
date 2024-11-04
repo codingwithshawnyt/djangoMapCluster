@@ -1,14 +1,14 @@
 {
-  "name": "anycluster-client",
+  "name": "djangomapcluster-client",
   "version": "0.4.0",
-  "description": "anycluster client for requesting map clusters from anycluster",
+  "description": "djangoMapCluster client for managing map clusters via djangoMapCluster",
   "main": "dist/main.js",
-  "module": "dist/anycluster.js",
+  "module": "dist/djangoMapCluster.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/biodiv/anycluster.git"
+    "url": "git+https://github.com/codingwithshawnyt/djangoMapCluster.git"
   },
   "files": [
     "dist"
@@ -16,7 +16,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/biodiv/anycluster/issues"
+    "url": "https://github.com/codingwithshawnyt/djangoMapCluster/issues"
   },
   "scripts": {
     "build": "tsc",
