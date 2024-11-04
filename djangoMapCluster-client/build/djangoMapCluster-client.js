@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnyclusterClient = void 0;
 const consts_1 = require("./consts");
-const anycluster_1 = require("./anycluster");
+const anycluster_1 = require("./djangoMapCluster");
 const defaultGridFillColors = {
     5: "rgba(255, 192, 203, .5)",
     10: "rgba(240, 128, 128, .5)",

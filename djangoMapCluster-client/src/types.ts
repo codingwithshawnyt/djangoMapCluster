@@ -23,3 +23,15 @@ export type GridCluster =  {
     geojson: Geometry,
     pinimg: null | string,
 }
+
+export type SuperCluster = {
+    id: number,
+    bounds: {
+        north: number,
+        east: number,
+        south: number,
+        west: number
+    },
+    count: number,
+    pinimg: string,
+}

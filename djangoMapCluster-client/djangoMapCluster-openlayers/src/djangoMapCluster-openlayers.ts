@@ -8,12 +8,12 @@ import {
     GeoJSON as IGeoJSON,
     IconType,
     SRIDS
-} from 'anycluster-client';
+} from 'djangoMapCluster-client';
 
 import {
     Bounds3857,
     Bounds4326
-} from 'anycluster-client';
+} from 'djangoMapCluster-client';
 
 export {
     ClusterMethod

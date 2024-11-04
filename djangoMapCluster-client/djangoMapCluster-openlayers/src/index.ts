@@ -1,4 +1,4 @@
 export {
     ClusterMethod,
     AnyclusterOpenLayers,
-} from "./anycluster-openlayers";
+} from "./djangoMapCluster-openlayers";

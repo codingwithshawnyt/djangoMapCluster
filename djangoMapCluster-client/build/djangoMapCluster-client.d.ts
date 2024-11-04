@@ -1,6 +1,6 @@
 import { ClusterMethod, GeometryType, IconType, SRIDS } from "./consts";
 import { GeoJSON, Marker, Cluster, Viewport } from "./geometry";
-import { Anycluster, Filter, FilterList, NestedFilter, FilterOrNestedFilter, FilterOrNestedFilterList, Modulations } from "./anycluster";
+import { Anycluster, Filter, FilterList, NestedFilter, FilterOrNestedFilter, FilterOrNestedFilterList, Modulations } from "./djangoMapCluster";
 export interface AnyclusterClientSettings {
     srid?: SRIDS;
     kmeansGridSize?: number;

@@ -1,4 +1,4 @@
 export {
     ClusterMethod,
     AnyclusterLeaflet,
-} from "./anycluster-leaflet";
+} from "./djangoMapCluster-leaflet";

@@ -15,7 +15,7 @@ import {
   FilterOrNestedFilter,
   FilterOrNestedFilterList,
   Modulations,
-} from "./anycluster";
+} from "./djangoMapCluster";
 
 const defaultGridFillColors = {
   5: "rgba(255, 192, 203, .5)",
