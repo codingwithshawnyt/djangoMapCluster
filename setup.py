@@ -1,9 +1,10 @@
 from setuptools import setup, find_packages
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
+# Read the contents of your README file
+with open("README.md", "r") as file_handle:
+    detailed_description = file_handle.read()
 
-install_requires = [
+required_packages = [
     'psycopg2',
     'djangorestframework',
     'jsonschema',
@@ -13,7 +14,7 @@ setup(
     name="djangoMapCluster",
     version='2.5.0',
     description='DjangoMapCluster enables server-side clustering of map markers specifically designed for GeoDjango applications',
-    long_description=long_description,
+    long_description=detailed_description,
     long_description_content_type="text/markdown",
     license='The MIT License',
     platforms=['OS Independent'],
@@ -29,5 +30,5 @@ setup(
     ],
     python_requires='>=3.6',
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=required_packages,
 )
