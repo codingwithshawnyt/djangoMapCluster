@@ -1,12 +1,9 @@
 djangoMapCluster (POSTGIS version)
 ==================================
 
-[https://djangoMapCluster.org](https://djangoMapCluster.org)
 
 djangoMapCluster facilitates server-side clustering of map markers for GeoDjango, ideal for handling large datasets of markers. 
 Performance varies by server capacity, typically supporting between 200,000 and 500,000 markers effectively.
-
-We recommend using the PostGIS version. A MySQL version is available but offers reduced features: https://github.com/biodiv/djangoMapCluster-mysql
 
 Features
 --------
