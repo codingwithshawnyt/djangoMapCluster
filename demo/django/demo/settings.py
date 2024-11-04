@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'anycluster',
+    'djangoMapCluster',
     'anymap',
     'rest_framework',
     'corsheaders',
@@ -84,7 +84,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'anycluster_demo',
+        'NAME': 'djangoMapCluster_demo',
         'USER': 'your_db_user',
         'PASSWORD': 'your_db_password',
         'HOST': '',
@@ -131,11 +131,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ANYCLUSTER_GEODJANGO_MODEL = 'anymap.Gardens'
-ANYCLUSTER_COORDINATES_COLUMN = 'coordinates'
-ANYCLUSTER_COORDINATES_COLUMN_SRID = 3857
-ANYCLUSTER_FILTERS = ['rating', 'free_entrance', 'last_renewal', 'style', 'owner__name']
-ANYCLUSTER_PINCOLUMN = 'style'
+DJANGOMAPCLUSTER_GEODJANGO_MODEL = 'anymap.Gardens'
+DJANGOMAPCLUSTER_COORDINATES_COLUMN = 'coordinates'
+DJANGOMAPCLUSTER_COORDINATES_COLUMN_SRID = 3857
+DJANGOMAPCLUSTER_FILTERS = ['rating', 'free_entrance', 'last_renewal', 'style', 'owner__name']
+DJANGOMAPCLUSTER_PINCOLUMN = 'style'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True

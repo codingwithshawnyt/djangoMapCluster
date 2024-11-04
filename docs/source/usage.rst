@@ -4,54 +4,45 @@ Basic Usage
 OpenLayers
 ----------
 
-1. Install or download the anycluster-openlayers client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Installation or Manual Download of the djangoMapCluster-OpenLayers Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-npm
-"""
+**npm Installation**
 
-You can install :code:`anycluster-openlayers from npm`
+You can install djangoMapCluster-OpenLayers via npm with the following command:
 
 .. code-block:: shell
 
-    npm install anycluster-openlayers
+    npm install djangoMapCluster-openlayers
 
+**Manual Integration**
 
-js module
-"""""""""
+Alternatively, you may manually download and integrate the djangoMapCluster-OpenLayers client into your project's static assets.
+Place the files `djangoMapCluster-openlayers.js` and `djangoMapCluster-openlayers.js.map` within your project's static directory.
 
-Instead of using npm, you also can download and include the anycluster-openlayers client into your static files.
-Put the files :code:`anycluster-openlayers.js` and :code:`anycluster-openlayers.js.map` somewhere in your static files.
+2. Configuration of Marker Images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+djangoMapCluster requires the provision of marker images to be displayed on the map. These images can either be custom-designed or sourced externally.
 
+Ensure that these images are accessible to djangoMapCluster-OpenLayers. For instance, if utilizing Django templates, you should store the marker images within your static files directory, such as `{your_directory}/static/djangoMapCluster/`.
 
-2. Provide marker images
-^^^^^^^^^^^^^^^^^^^^^^^^
-anycluster requires marker images which will be placed on the map. You can use your own images or download marker images here.
-
-You have to make the marker images accessible by anycluster-openlayers.
-
-If you are using django templates, put the marker images into your static files to make them accessible by anycluster.
-For example, put all marker images into the folder :code:`{somewhere}/static/anycluster/`
-
-
-3. Create a script instantiating AnyclusterOpenLayers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3. Script Creation for djangoMapCluster-OpenLayers Initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    You have to use :code:`constrainResolution: true` on your :code:`ol.View`.
-    This ensures that only integer zoom levels are used.
+    It is imperative to set `constrainResolution: true` in your `ol.View` to ensure the usage of only integer zoom levels.
 
-    The given example script is for the use-case of the js module in django templates.
-    If you have installed anycluster-openlayers from **npm**, use
-    :code:`import { AnyclusterOpenLayers } from 'anycluster-openlayers';`
+    Below is an example script tailored for a Django template setup. If djangoMapCluster-OpenLayers was installed via npm, include the module using:
+    
+    .. code:: javascript
+    
+        import { djangoMapClusterOpenLayers } from 'djangoMapCluster-openlayers';
 
-    **Important:** openlayers uses :code:`EPSG:3857` by default, so make sure to adjust the
-    settings passed to :code:`AnyclusterOpenLayers` accordingly.
-
+    **Important:** By default, OpenLayers operates under the `EPSG:3857` projection. Adjust your settings to align with this configuration if necessary.
 
 .. code-block:: javascript
 
-    import { AnyclusterOpenLayers } from '/static/anycluster-openlayers.js';
+    import { djangoMapClusterOpenLayers } from '/static/djangoMapCluster-openlayers.js';
 
     const Map = ol.Map;
     const TileLayer = ol.layer.Tile;
@@ -74,7 +65,7 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
         }),
     });
 
-    const apiUrl = 'URL_TO_YOUR_SERVER_RUNNING_ANYCLUSTER';
+    const apiUrl = 'URL_TO_YOUR_SERVER_RUNNING_DJANGOMAPCLUSTER';
 
     const settings = {
         srid: 'EPSG:3857',
@@ -83,59 +74,56 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
         }
     };
 
-    const markerFolderPath = '/static/anycluster/images/';
+    const markerFolderPath = '/static/djangoMapCluster/images/';
 
-    let anyclusterOpenLayers = new AnyclusterOpenLayers(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterOpenLayers = new djangoMapClusterOpenLayers(map, apiUrl, markerFolderPath, settings);
     
-Put the script in the appropriate django template or javascript file.
+Incorporate this script into the appropriate Django template or JavaScript file to enable marker clustering on your OpenLayers map.
 
-**That's it. Your OpenLayers map markers are now being clustered!**
+**Completion**
+
+Upon successful integration and configuration, your OpenLayers map will now effectively cluster markers.
 
 ----
 
 Leaflet
 -------
 
-1. Install or Download the anycluster-leaflet client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Installation or Manual Download of the djangoMapCluster-Leaflet Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-npm
-"""
+**npm Installation**
 
-You can install :code:`anycluster-leaflet from npm`
+You can install djangoMapCluster-Leaflet via npm with the following command:
 
 .. code-block:: shell
 
-    npm install anycluster-leaflet
+    npm install djangoMapCluster-leaflet
 
+**Manual Integration**
 
-js module
-"""""""""
+Alternatively, you may manually download and integrate the djangoMapCluster-Leaflet client into your project's static assets.
+Place the files `djangoMapCluster-leaflet.js` and `djangoMapCluster-leaflet.js.map` within your project's static directory.
 
-Instead of using npm, you also can download and include the anycluster-openlayers client into your static files.
-Put the files :code:`anycluster-leaflet.js` and :code:`anycluster-leaflet.js.map` somewhere in your static files.
+2. Configuration of Marker Images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+djangoMapCluster requires the provision of marker images to be displayed on the map. These images can either be custom-designed or sourced externally.
 
+Ensure that these images are accessible to djangoMapCluster-Leaflet. For instance, if utilizing Django templates, you should store the marker images within your static files directory, such as `{your_directory}/static/djangoMapCluster/`.
 
-2. Provide marker images
-^^^^^^^^^^^^^^^^^^^^^^^^
-anycluster requires marker images which are placed on the map.
-You can use your own images or download marker images here.
-
-Put the marker images into your static files to make them accessible by anycluster.
-For example, put all marker images into the folder :code:`{somewhere}/static/anycluster/`
-
-3. Create a script instantiating AnyclusterLeaflet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+3. Script Creation for djangoMapCluster-Leaflet Initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    The given example script is for the use-case of the js module in django templates.
-    If you have installed anycluster-leaflet from **npm**, use
-    :code:`import { AnyclusterLeaflet } from 'anycluster-leaflet';`
+    Below is an example script tailored for a Django template setup. If djangoMapCluster-Leaflet was installed via npm, include the module using:
+    
+    .. code:: javascript
+    
+        import { djangoMapClusterLeaflet } from 'djangoMapCluster-leaflet';
 
 .. code-block:: javascript
 
-    import { AnyclusterLeaflet } from '/static/anycluster-leaflet.js';
+    import { djangoMapClusterLeaflet } from '/static/djangoMapCluster-leaflet.js';
 
     let map = L.map('map', {
         center: [47.4, 10.3],
@@ -149,8 +137,7 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-
-    const apiUrl = 'URL_TO_YOUR_SERVER_RUNNING_ANYCLUSTER';
+    const apiUrl = 'URL_TO_YOUR_SERVER_RUNNING_DJANGOMAPCLUSTER';
 
     const settings = {
         onFinalClick: function (marker, data) {
@@ -158,53 +145,56 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
         }
     };
 
-    const markerFolderPath = '/static/anycluster/images/';
+    const markerFolderPath = '/static/djangoMapCluster/images/';
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
+
+Incorporate this script into the appropriate Django template or JavaScript file to enable marker clustering on your Leaflet map.
+
+**Completion**
+
+Upon successful integration and configuration, your Leaflet map will now effectively cluster markers.
 
 ----
 
 Google Maps
 -----------
 
-1. Install or download the anycluster-google client
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. Installation or Manual Download of the djangoMapCluster-Google Client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-npm
-"""
+**npm Installation**
 
-You can install :code:`anycluster-google from npm`
+You can install djangoMapCluster-Google via npm with the following command:
 
 .. code-block:: shell
 
-    npm install anycluster-google
+    npm install djangoMapCluster-google
 
+**Manual Integration**
 
-js module
-"""""""""
+Alternatively, you may manually download and integrate the djangoMapCluster-Google client into your project's static assets.
+Place the files `djangoMapCluster-google.js` and `djangoMapCluster-google.js.map` within your project's static directory.
 
-Instead of using npm, you also can download and include the anycluster-openlayers client into your static files.
-Put the files :code:`anycluster-google.js` and :code:`anycluster-google.js.map` somewhere in your static files.
+2. Configuration of Marker Images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+djangoMapCluster requires the provision of marker images to be displayed on the map. These images can either be custom-designed or sourced externally.
 
-2. Provide marker images
-^^^^^^^^^^^^^^^^^^^^^^^^
-anycluster requires marker images which are placed on the map.
-You can use your own images or download marker images here.
+Ensure that these images are accessible to djangoMapCluster-Google. For instance, if utilizing Django templates, you should store the marker images within your static files directory, such as `{your_directory}/static/djangoMapCluster/`.
 
-Put the marker images into your static files to make them accessible by anycluster.
-For example, put all marker images into the folder :code:`{somewhere}/static/anycluster/`
-
-3. Create a script instantiating AnyclusterGoogle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3. Script Creation for djangoMapCluster-Google Initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
-    The given example script is for the use-case of the js module in django templates.
-    If you have installed anycluster-google from **npm**, use
-    :code:`import { AnyclusterGoogle } from 'anycluster-google';`
+    Below is an example script tailored for a Django template setup. If djangoMapCluster-Google was installed via npm, include the module using:
+    
+    .. code:: javascript
+    
+        import { djangoMapClusterGoogle } from 'djangoMapCluster-google';
 
 .. code-block:: javascript
 
-    import { AnyclusterGoogle } from "/static/anycluster-google.js";
+    import { djangoMapClusterGoogle } from "/static/djangoMapCluster-google.js";
 
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 3,
@@ -212,14 +202,14 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
     });
 
     const singlePinImages = {
-        'imperial': '/static/anycluster/pin_imperial.png',
-        'stone': '/static/anycluster/pin_stone.png',
-        'wild': '/static/anycluster/pin_wild.png',
-        'japanese': '/static/anycluster/pin_japan.png',
-        'flower': '/static/anycluster/pin_flower.png'
+        'imperial': '/static/djangoMapCluster/pin_imperial.png',
+        'stone': '/static/djangoMapCluster/pin_stone.png',
+        'wild': '/static/djangoMapCluster/pin_wild.png',
+        'japanese': '/static/djangoMapCluster/pin_japan.png',
+        'flower': '/static/djangoMapCluster/pin_flower.png'
     }
 
-    const apiUrl = "http://localhost:8080/anycluster/";
+    const apiUrl = "http://localhost:8080/djangoMapCluster/";
 
     const settings = {
         singlePinImages: singlePinImages,
@@ -228,9 +218,14 @@ For example, put all marker images into the folder :code:`{somewhere}/static/any
         }
     };
 
-    const markerFolderPath = '/static/anycluster/images/';
+    const markerFolderPath = '/static/djangoMapCluster/images/';
 
     google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
-        const anyclusterGoogle = new AnyclusterGoogle('{{ google_maps_api_key }}', map, apiUrl, markerFolderPath, settings);
+        const djangoMapClusterGoogle = new djangoMapClusterGoogle('{{ google_maps_api_key }}', map, apiUrl, markerFolderPath, settings);
     });
 
+Incorporate this script into the appropriate Django template or JavaScript file to enable marker clustering on your Google Maps map.
+
+**Completion**
+
+Upon successful integration and configuration, your Google Maps map will now effectively cluster markers.

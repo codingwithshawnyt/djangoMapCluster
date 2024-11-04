@@ -4,60 +4,60 @@ Installation and Configuration
 Prerequisites
 -------------
 
-* Django 2.x, 3.x or 4.x
-* python3
-* Geodjango
-* PostGis 2.x
-* (for kmeans clustering, recommended) kmeans PostgreSQL extension: https://github.com/umitanuki/kmeans-postgresql
+* Django 2.x, 3.x, or 4.x
+* Python 3
+* GeoDjango
+* PostGIS 2.x
+* (Recommended for k-means clustering) k-means PostgreSQL extension: https://github.com/umitanuki/kmeans-postgresql
 
+k-means PostGIS Extension
+-------------------------
 
-kmeans postgis exension
------------------------
+**Installing the k-means PostgreSQL Extension (Optional, Required for k-means Clustering)**
 
-**Installing the kmeans PostgreSQL extension (optional, needed for kmeans clustering)**
+1. Download and unzip the k-means PostgreSQL extension from https://github.com/umitanuki/kmeans-postgresql on your server.
+2. Ensure the development packages for your PostgreSQL server are installed (e.g., `sudo apt-get install libpq-dev postgresql-server-dev-10`).
 
-1. Download and unzip https://github.com/umitanuki/kmeans-postgresql on your server.
-2. make sure you have the development packages for you postgresql server package installed (e.g. sudo apt-get install libpq-dev postgresql-server-dev-10)
-
-3. In your unzipped kmeans folder run the following (e.g. on ubuntu)
+3. Within the unzipped k-means directory, execute the following commands (example for Ubuntu):
 
    .. code-block:: bash
 
       make
       sudo make install
-      psql -f /usr/share/postgresql/14/extension/kmeans.sql -d YOURGEODJANGODATABASE
+      psql -f /usr/share/postgresql/14/extension/kmeans.sql -d YOUR_GEODJANGO_DATABASE
 
-   The latter needs to be processed as a postgresql superuser, e.g. the user postgres. You now have access to the kmeans functions which are necessary for the pin-based clustering.
+   Execute the above commands as a PostgreSQL superuser, such as the user 'postgres'. This grants access to the k-means functions necessary for pin-based clustering.
 
-on opensuse, the psql command would be
+For openSUSE, the `psql` command would be:
 
 .. code-block:: bash
 
-   psql -f /usr/share/postgresql15/extension/kmeans.sql -d YOURGEODJANGODATABASE
+   psql -f /usr/share/postgresql15/extension/kmeans.sql -d YOUR_GEODJANGO_DATABASE
 
-The number *14* or *15* depends on the postgresql versoin you are using.
+The version number (e.g., *14* or *15*) corresponds to the version of PostgreSQL you are using.
 
-django configuration
+Django Configuration
 --------------------
 
-**Install anycluster with your Django installation**
+**Installing djangoMapCluster with Your Django Installation**
 
-1. use ``pip install anycluster`` OR unzip the folder anycluster into your project directory
-2. add 'anycluster' to your INSTALLED_APPS
-3. required SETTINGS (settings.py)
+1. Install djangoMapCluster using pip or by manually unzipping the folder into your project directory:
 
-   .. code-block:: python
+   .. code-block:: bash
 
-     ANYCLUSTER_GEODJANGO_MODEL = "yourapp.models.your_geodjango_model" 
-     ANYCLUSTER_COORDINATES_COLUMN = "your_geometric_column"
+      pip install djangoMapCluster
 
+2. Add 'djangoMapCluster' to your `INSTALLED_APPS` in `settings.py`.
 
-4. urls.py
+3. Configure the necessary settings in `settings.py`:
 
    .. code-block:: python
 
-      path('anycluster/', include('anycluster.urls')),
+     DJANGOMAPCLUSTER_GEODJANGO_MODEL = "yourapp.models.your_geodjango_model"
+     DJANGOMAPCLUSTER_COORDINATES_COLUMN = "your_geometric_column"
 
+4. Update `urls.py` to include djangoMapCluster's URLs:
 
+   .. code-block:: python
 
-
+      path('djangoMapCluster/', include('djangoMapCluster.urls')),

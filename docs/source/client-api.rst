@@ -1,49 +1,46 @@
-anycluster-client api
-=====================
-
+djangoMapCluster Client API
+===========================
 
 Instantiation
 -------------
 
-The AncylusterClient class depends on your map framework.
+The djangoMapClusterClient class is tailored to your specific map framework.
 
 .. code-block:: javascript
 
-    let anyclusterOpenLayers = new AnyclusterOpenLayers(map, apiUrl, markerFolderPath, settings);
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
-    let anyclusterGoogle = new AnyclusterGoogle(apiKey, map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterOpenLayers = new djangoMapClusterOpenLayers(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterGoogle = new djangoMapClusterGoogle(apiKey, map, apiUrl, markerFolderPath, settings);
 
 
 Parameters
 ^^^^^^^^^^
 
 map
-    Instatiated map object. Either :code:`ol.Map`, :code:`L.map` or :code:`google.maps.Map`
+    An instantiated map object. Supports :code:`ol.Map`, :code:`L.map`, or :code:`google.maps.Map`.
 
 apiUrl
-    A string representing the url of your running django project with anycluster installed. 
-    
-    E.g. :code:`http://localhost:8080/anycluster/api`.
+    The URL of your Django project where djangoMapCluster is installed. 
+    Example: :code:`http://localhost:8080/djangoMapCluster/api`.
 
-apiKey *(google only)*
-    Your google maps apiKey.
+apiKey *(Google Maps only)*
+    Your Google Maps API key.
 
 markerFolderPath
-    A string representing the path to the images anycluster should use to represent clusters on the map.
-
-    E.g. :code:`/static/anycluster/`
+    Path to the images djangoMapCluster uses to represent clusters on the map.
+    Example: :code:`/static/djangoMapCluster/`.
 
 settings (optional)
-    An object representing the settings for the anycluster client.
+    Configuration object for the djangoMapCluster client.
 
 
-settings
+Settings
 --------
 
 Available settings:
 
 +---------------------+------------+--------------------------------------------------+----------------------------+
-| setting             | type       | possible values, example                         | default                    |
+| Setting             | Type       | Possible Values, Example                         | Default                    |
 +=====================+============+==================================================+============================+
 | srid                | string     | :code:`EPSG:4326`, :code:`EPSG:3857`             | :code:`EPSG:4326`          |
 +---------------------+------------+--------------------------------------------------+----------------------------+
@@ -64,8 +61,8 @@ Available settings:
 | singlePinImages     | object     | .. code-block:: javascript                       | {}                         |
 |                     |            |                                                  |                            |
 |                     |            |   {                                              |                            |
-|                     |            |    'stone': '/static/anycluster/pin_stone.png',  |                            |
-|                     |            |    'flower': '/static/anycluster/pin_flower.png' |                            |
+|                     |            |    'stone': '/static/djangoMapCluster/pin_stone.png',  |                            |
+|                     |            |    'flower': '/static/djangoMapCluster/pin_flower.png' |                            |
 |                     |            |   }                                              |                            |
 +---------------------+------------+--------------------------------------------------+----------------------------+
 | markerImageSizes    | object     |                                                  | .. code-block:: javascript |
@@ -88,7 +85,7 @@ Available settings:
 +---------------------+------------+--------------------------------------------------+----------------------------+
 
 settings.onFinalClick
-    Hook for what happens when the user clicks on a final marker.
+    Defines the action when the user clicks on a final marker.
 
     .. code-block:: javascript
 
@@ -100,8 +97,7 @@ settings.onFinalClick
 
 
 settings.onGotClusters
-    Hook for things that should happen after the map has been updated with new clusters.
-    This happens e.g. when the map has been panned or the zoom level changed.
+    Defines actions after the map has been updated with new clusters, such as after panning or zoom level changes.
 
     .. code-block:: javascript
 
@@ -115,9 +111,9 @@ settings.onGotClusters
 Filtering
 ---------
 
-You can manage the datasets shown on your map by using filters.
+Manage the datasets displayed on your map using filters.
 
-filter object
+Filter Object
 ^^^^^^^^^^^^^
 
 .. code-block:: javascript
@@ -131,41 +127,41 @@ filter object
 
 
 DATABASE_COLUMN
-    The :code:`DATABASE_COLUMN` string is the name of the database column this filter should be applied to.
+    The database column to which this filter should be applied.
 
 VALUE
-    The :code:`VALUE` of the filter can be of type :code:`string`, :code:`number`, :code:`bool` or :code:`Array`
+    The value of the filter can be of type :code:`string`, :code:`number`, :code:`bool`, or :code:`Array`.
 
 OPERATOR
-    The :code:`OPERATOR` string can be one of the following:
+    The operator used in the filter, options include:
 
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | operator            | description                                        | applicable to value types              |
+    | Operator            | Description                                        | Applicable to Value Types              |
     +=====================+====================================================+========================================+
-    | =                   | equals                                             | string, number, bool                   |
+    | =                   | Equals                                             | string, number, bool                   |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | !=                  | does not equal                                     | string, number, bool                   |
+    | !=                  | Does not equal                                     | string, number, bool                   |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | >=                  | larger than or equal to                            | number                                 |
+    | >=                  | Larger than or equal to                            | number                                 |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | <=                  | smaller than or equal to                           | number                                 |
+    | <=                  | Smaller than or equal to                           | number                                 |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | startswith          | string starts with, case insensitive               | string                                 |
+    | startswith          | String starts with, case insensitive               | string                                 |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | contains            | string contains, case insensitive                  | string                                 |
+    | contains            | String contains, case insensitive                  | string                                 |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | in                  | values equal to one of the list items              | Array                                  |
+    | in                  | Values equal to one of the list items              | Array                                  |
     +---------------------+----------------------------------------------------+----------------------------------------+
-    | not in              | values different from all of the list items        | Array                                  |
+    | not in              | Values different from all of the list items        | Array                                  |
     +---------------------+----------------------------------------------------+----------------------------------------+
 
 
 LOGICAL_OPERATOR
 
-    The :code:`LOGICAL_OPERATOR` string can be one of the following:
+    The logical operator used to combine multiple filters:
 
     +---------------------+----------------------------------------------------+
-    | logical operator    | description                                        | 
+    | Logical Operator    | Description                                        | 
     +=====================+====================================================+
     | AND                 | Filters are concatenated using SQL AND             |
     +---------------------+----------------------------------------------------+
@@ -173,30 +169,30 @@ LOGICAL_OPERATOR
     +---------------------+----------------------------------------------------+
 
 
-    The default concatenation method is :code:`AND`
+    The default method for combining filters is :code:`AND`.
 
 
 
-Filtering methods of AnyclusterClient
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Filtering Methods of djangoMapClusterClient
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 filter(filterObject or filterObject[], reloadMarkers *boolean*)
-    Applies the given filter to AnyclusterClient. Removes all other filters.
+    Applies the specified filter to djangoMapClusterClient, removing all other filters.
 
 addFilter(filterObject, reloadMarkers *boolean*)
-    Adds the given filter to AnyclusterClient if it does not yet exist. Does not remove previously added filters.
+    Adds the specified filter to djangoMapClusterClient if it does not already exist. Does not remove previously added filters.
 
 removeFilter(filterObject, reloadMarkers *boolean*)
-    Removes the given filter from AnyclusterClient if it exists.
+    Removes the specified filter from djangoMapClusterClient if it exists.
 
 addFilters(filterObject[], reloadMarkers *boolean*)
-    Adds multiple filters to AnyclusterClient at once. Doesn ot remove previously added filters.
+    Adds multiple filters to djangoMapClusterClient at once. Does not remove previously added filters.
 
 removeFilters(filterObject[], reloadMarkers *boolean*)
-    Removes multiple filters to AnyclusterClient at once.
+    Removes multiple filters from djangoMapClusterClient at once.
 
 resetFilters(reloadMarkers *boolean*)
-    Removes all filters from AnyclusterClient.
+    Removes all filters from djangoMapClusterClient.
    
 Examples
 ^^^^^^^^
@@ -205,28 +201,28 @@ Examples
 
 .. code-block:: javascript
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
     const filter = {
         "column": "style",
         "value": "flower",
         "operator": "=" 
     };
 
-    anyclusterLeaflet.filter(filter);
+    djangoMapClusterLeaflet.filter(filter);
 
 
 2. Applying two filters and refreshing the map only after applying the second filter. This equals an :code:`AND` lookup.
 
 .. code-block:: javascript
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
     const styleFilter = {
         "column": "style",
         "value": "flower",
         "operator": "=" 
     };
 
-    anyclusterLeaflet.addFilter(styleFilter, false);
+    djangoMapClusterLeaflet.addFilter(styleFilter, false);
 
     const entranceFilter = {
         "column": "free_entrance",
@@ -234,42 +230,42 @@ Examples
         "operator": "=" 
     };
 
-    anyclusterLeaflet.addFilter(entranceFilter);
+    djangoMapClusterLeaflet.addFilter(entranceFilter);
 
 3. Applying a list filter and refreshing the map. This equals an :code:`OR` lookup.
    
 .. code-block:: javascript
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
     const filter = {
         "column": "style",
         "value": ["flower", "stone"],
         "operator": "in" 
     };
 
-    anyclusterLeaflet.filter(filter);
+    djangoMapClusterLeaflet.filter(filter);
 
 
 4. Applying a logical operator
 
 .. code-block:: javascript
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
     const filters = [
         {
             "column": "style",
-            "value": "flower",,
+            "value": "flower",
             "operator": "=" 
         },
         {
             "column": "style",
-            "value": "stone",,
+            "value": "stone",
             "operator": "=",
             "logicalOperator": "OR"
         },
     ];
 
-    anyclusterLeaflet.filter(filters);
+    djangoMapClusterLeaflet.filter(filters);
 
 
 Nested Filtering
@@ -283,13 +279,13 @@ Example
 
 .. code-block:: javascript
 
-    let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+    let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
     const filters = [
         {
             "filters": [
                 {
                     "column": "style",
-                    "value": "flower",,
+                    "value": "flower",
                     "operator": "=" 
                 },
                 {
@@ -303,7 +299,7 @@ Example
             "filters": [
                 {
                     "column": "style",
-                    "value": "stone",,
+                    "value": "stone",
                     "operator": "=",
                 },
                 {
@@ -316,7 +312,7 @@ Example
         }
     ];
 
-    anyclusterLeaflet.filter(filters);
+    djangoMapClusterLeaflet.filter(filters);
 
 
 
@@ -330,9 +326,9 @@ getMapContentCount(modulations:object)
 
     .. code-block:: javascript
 
-        let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+        let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
 
-        const mapContentCount = await anyclusterLeaflet.getMapContentCount();
+        const mapContentCount = await djangoMapClusterLeaflet.getMapContentCount();
 
         const count = mapContentCount["count"];
 
@@ -350,12 +346,12 @@ getMapContentCount(modulations:object)
     **Modulations**
 
     Modulations are like filters, but they are applied only for the current :code:`getMapContentCount` request.
-    They are not stored in :code:`anyclusterClient.filters`.
+    They are not stored in :code:`djangoMapClusterClient.filters`.
     You can use simple filters as well as nested filters for modulations.
     
     .. code-block:: javascript
 
-        let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+        let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
         
         const modulations = {
             "stone" : {
@@ -385,7 +381,7 @@ getMapContentCount(modulations:object)
             }
         };
 
-        const mapContentCount = await anyclusterLeaflet.getMapContentCount(modulations);
+        const mapContentCount = await djangoMapClusterLeaflet.getMapContentCount(modulations);
 
     The returned object looks like this:
 
@@ -412,10 +408,10 @@ getGroupedMapContents(groupBy:string)
     
     .. code-block:: javascript
 
-        let anyclusterLeaflet = new AnyclusterLeaflet(map, apiUrl, markerFolderPath, settings);
+        let djangoMapClusterLeaflet = new djangoMapClusterLeaflet(map, apiUrl, markerFolderPath, settings);
 
         const groupBy = "style";
-        const groupedMapContents = anyclusterLeaflet.getGroupedMapContents(groupBy);
+        const groupedMapContents = djangoMapClusterLeaflet.getGroupedMapContents(groupBy);
 
     
     The returned object looks like this:
@@ -449,4 +445,4 @@ Getting Content
 
 getMapContents(limit?: number, offset?:number)
     Fetches a list of the currently displayed data. By default, model instances with all their fields are returned.
-    You can configure this using a custom serializer with :code:`settings.ANYCLUSTER_GIS_MODEL_SERIALIZER`.
+    You can configure this using a custom serializer with :code:`settings.DJANGOMAPCLUSTER_GIS_MODEL_SERIALIZER`.

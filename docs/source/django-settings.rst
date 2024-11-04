@@ -1,73 +1,76 @@
-django settings
-===============
+Django Settings for djangoMapCluster
+====================================
 
-Available settings:
+Configuration Parameters
+------------------------
+
+The following table outlines the available settings for djangoMapCluster, detailing their data types, examples, and whether they are mandatory or optional.
 
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| setting                               | type       | example                                          | required                  |
+| Setting                               | Type       | Example                                          | Required                  |
 +=======================================+============+==================================================+===========================+
-| ANYCLUSTER_GEODJANGO_MODEL            | string     | 'app_name.ModelName'                             | required                  |
+| DJANGOMAPCLUSTER_GEODJANGO_MODEL      | string     | 'app_name.ModelName'                             | Required                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| ANYCLUSTER_COORDINATES_COLUMN         | string     | 'coordinates'                                    | required                  |
+| DJANGOMAPCLUSTER_COORDINATES_COLUMN   | string     | 'coordinates'                                    | Required                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| ANYCLUSTER_COORDINATES_COLUMN_SRID    | integer    | 3857                                             | optional                  |
+| DJANGOMAPCLUSTER_COORDINATES_COLUMN_SRID | integer | 3857                                             | Optional                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| ANYCLUSTER_FILTERS                    | string[]   | ['db_column_1', 'db_column_2']                   | optional                  |
+| DJANGOMAPCLUSTER_FILTERS              | string[]   | ['db_column_1', 'db_column_2']                   | Optional                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| ANCLUSTER_PINCOLUMN                   | string     | 'db_column'                                      | optional                  |
+| DJANGOMAPCLUSTER_PINCOLUMN            | string     | 'db_column'                                      | Optional                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
-| ANCLUSTER_GIS_MODEL_SERIALIZER        | string     | 'myapp.api.serializers.DatasetRetrieveSerializer'| optional                  |
+| DJANGOMAPCLUSTER_GIS_MODEL_SERIALIZER | string     | 'myapp.api.serializers.DatasetRetrieveSerializer'| Optional                  |
 +---------------------------------------+------------+--------------------------------------------------+---------------------------+
 
-ANYCLUSTER_GEODJANGO_MODEL
-    The model the anycluster api should query.
+Detailed Descriptions
+---------------------
 
-ANYCLUSTER_COORDINATES_COLUMN
-    The name of the gis column of the model specified in ANYCLUSTER_GEODJANGO_MODEL.
+**DJANGOMAPCLUSTER_GEODJANGO_MODEL**
+    Specifies the Django model that djangoMapCluster will query.
 
-ANYCLUSTER_COORDINATES_COLUMN_SRID *(optional)*
-    anycluster will try to determine the srid of your database column by itself. If anycluster fails to read the srid, *4326* will be used.
+**DJANGOMAPCLUSTER_COORDINATES_COLUMN**
+    Defines the GIS column of the model specified in DJANGOMAPCLUSTER_GEODJANGO_MODEL.
 
-ANYCLUSTER_FILTERS
-    Only the specified columns can be used as filters.
+**DJANGOMAPCLUSTER_COORDINATES_COLUMN_SRID** *(optional)*
+    djangoMapCluster attempts to automatically determine the SRID of your database column. If unsuccessful, *4326* will be used as a default.
 
-ANYCLUSTER_PINCOLUMN
-    If you want varying markers for pins with count 1, you can specify the database column here.
+**DJANGOMAPCLUSTER_FILTERS**
+    Restricts the columns that can be used as filters within queries.
 
-    Example setting:
+**DJANGOMAPCLUSTER_PINCOLUMN**
+    Allows for the specification of a database column to vary markers for pins with a count of one.
+
+    Example configuration:
 
     .. code-block:: python
 
-        ANYCLUSTER_PINCOLUMN = 'style'
+        DJANGOMAPCLUSTER_PINCOLUMN = 'style'
 
-    In conjunction with the following setting of AnyclusterClient
+    This setting works in conjunction with the following configuration of djangoMapClusterClient:
 
     .. code-block:: javascript
 
         const settings = {
             singlePinImages : {
-                'stone': '/static/anycluster/pin_stone.png',
-                'flower': '/static/anycluster/pin_flower.png'
+                'stone': '/static/djangoMapCluster/pin_stone.png',
+                'flower': '/static/djangoMapCluster/pin_flower.png'
             }
         };
 
-        const anyclusterClient = new anyclusterOpenLayers(map, apiUrl, markerFolderPath, settings);
+        const djangoMapClusterClient = new djangoMapClusterOpenLayers(map, apiUrl, markerFolderPath, settings);
 
+    If the `style` column of the dataset equals `stone`, `/static/djangoMapCluster/pin_stone.png` will be used as the marker image.
 
-    If the :code:`style` column of the dataset equals :code:`stone`, :code:`/static/anycluster/pin_stone.png` will be used as an image for the marker.
-    
+**DJANGOMAPCLUSTER_GIS_MODEL_SERIALIZER**
+    Defines the Django REST Framework serializer used for retrieving datasets with `djangoMapClusterClient.getMapContents`.
+    This serializer is also utilized for data received by `djangoMapClusterClient.onFinalClick`.
 
-ANYCLUSTER_GIS_MODEL_SERIALIZER
-    Define the `django-rest-framework <https://www.django-rest-framework.org/api-guide/serializers/>`_ serializer used for getting datasets with :code:`anyclusterClient.getMapContents`.
-    The defined serializer is also used for the data received by :code:`anyclusterClient.onFinalClick`.
-
-
-**Example settings with all entries**:
+**Example Configuration with All Entries**:
 
 .. code-block:: python
 
-    ANYCLUSTER_GEODJANGO_MODEL = 'anymap.Gardens'
-    ANYCLUSTER_COORDINATES_COLUMN = 'coordinates'
-    ANYCLUSTER_COORDINATES_COLUMN_SRID = 3857
-    ANYCLUSTER_FILTERS = ['rating', 'free_entrance', 'last_renewal', 'style']
-    ANYCLUSTER_PINCOLUMN = 'style'
+    DJANGOMAPCLUSTER_GEODJANGO_MODEL = 'anymap.Gardens'
+    DJANGOMAPCLUSTER_COORDINATES_COLUMN = 'coordinates'
+    DJANGOMAPCLUSTER_COORDINATES_COLUMN_SRID = 3857
+    DJANGOMAPCLUSTER_FILTERS = ['rating', 'free_entrance', 'last_renewal', 'style']
+    DJANGOMAPCLUSTER_PINCOLUMN = 'style'

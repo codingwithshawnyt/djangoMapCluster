@@ -1,8 +1,16 @@
+-- Create a PostgreSQL function named kmeans that takes an array of floats and an integer
 CREATE FUNCTION kmeans(float[], int) RETURNS int
-AS '$libdir/kmeans'
-LANGUAGE c VOLATILE STRICT WINDOW;
+AS '$libdir/kmeans'  -- Specify the dynamic library where the function's implementation is located
+LANGUAGE c           -- The function is implemented in C
+VOLATILE             -- Indicates that the function can return different results for the same input
+STRICT               -- Function will not be called with null inputs
+WINDOW;              -- Function can be used as a window function
 
+-- Create another version of the kmeans function that also includes an initial centroids parameter
 CREATE FUNCTION kmeans(float[], int, float[]) RETURNS int
-AS '$libdir/kmeans', 'kmeans_with_init'
-LANGUAGE C IMMUTABLE STRICT WINDOW;
+AS '$libdir/kmeans', 'kmeans_with_init'  -- Specify the dynamic library and the specific function
+LANGUAGE C                               -- The function is implemented in C
+IMMUTABLE                                -- Indicates that the function always returns the same result for the same input
+STRICT                                   -- Function will not be called with null inputs
+WINDOW;                                  -- Function can be used as a window function
 

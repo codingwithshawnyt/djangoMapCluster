@@ -6,9 +6,9 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'anycluster'
-copyright = '2023, biodiv (MIT licence)'
-author = 'Thomas Uher'
+project = 'djangoMapCluster'  # Updated project name
+copyright = '2024, Shawn Ray (MIT licence)'  # Updated copyright year and author
+author = 'Shawn Ray'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -19,7 +19,6 @@ extensions = []
 
 templates_path = ['_templates']
 exclude_patterns = []
-
 
 
 # -- Options for HTML output -------------------------------------------------

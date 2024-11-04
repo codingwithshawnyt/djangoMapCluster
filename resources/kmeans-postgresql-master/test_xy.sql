@@ -1,40 +1,45 @@
---
 -- PostgreSQL database dump
---
 
 -- Started on 2011-07-10 18:38:29
 
+-- Set the statement timeout to unlimited
 SET statement_timeout = 0;
+-- Set the client encoding to UTF-8
 SET client_encoding = 'UTF8';
+-- Disable standard conforming strings
 SET standard_conforming_strings = off;
+-- Disable function body checks
 SET check_function_bodies = false;
+-- Set the minimum level of messages to warnings
 SET client_min_messages = warning;
+-- Disable warnings on escape string syntax
 SET escape_string_warning = off;
 
+-- Set the search path to public and pg_catalog schemas
 SET search_path = public, pg_catalog;
 
+-- Set the default tablespace to empty (use the default tablespace)
 SET default_tablespace = '';
 
+-- Set the default with OIDs to false
 SET default_with_oids = false;
 
---
+-- Table of Contents entry for the test_xy table
 -- TOC entry 2384 (class 1259 OID 73780)
 -- Dependencies: 3
 -- Name: test_xy; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
 
+-- Create the test_xy table with gid, x, and y columns
 CREATE TABLE test_xy (
     gid integer NOT NULL,
     x double precision,
     y double precision
 );
 
-
---
+-- Table of Contents entry for the data of test_xy table
 -- TOC entry 2684 (class 0 OID 73780)
 -- Dependencies: 2384
 -- Data for Name: test_xy; Type: TABLE DATA; Schema: public; Owner: -
---
 
 INSERT INTO test_xy (gid, x, y) VALUES (1, -1.3274956217162872, 0.55166374781085814);
 INSERT INTO test_xy (gid, x, y) VALUES (2, -1.264448336252189, 0.5376532399299474);
@@ -69,19 +74,16 @@ INSERT INTO test_xy (gid, x, y) VALUES (30, 1.7408056042031523, 0.59719789842381
 INSERT INTO test_xy (gid, x, y) VALUES (31, 1.555166374781086, 0.66024518388791598);
 
 
---
+-- Table of Contents entry for the primary key constraint of test_xy table
 -- TOC entry 2683 (class 2606 OID 73784)
 -- Dependencies: 2384 2384
 -- Name: test_xy_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
 
+-- Add a primary key constraint to the test_xy table on the gid column
 ALTER TABLE ONLY test_xy
     ADD CONSTRAINT test_xy_pkey PRIMARY KEY (gid);
 
-
 -- Completed on 2011-07-10 18:38:29
 
---
 -- PostgreSQL database dump complete
---
 
